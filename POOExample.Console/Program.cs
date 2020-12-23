@@ -1,4 +1,6 @@
-﻿using POOExample.ConsoleApp.Entidades.Veiculo;
+﻿using POOExample.ConsoleApp.Entidades.Pessoa;
+using POOExample.ConsoleApp.Entidades.Pessoa.Base;
+using POOExample.ConsoleApp.Entidades.Veiculo;
 using POOExample.ConsoleApp.Entidades.Veiculo.Base;
 using System;
 
@@ -19,10 +21,11 @@ namespace POOExample.ConsoleApp
                 switch (Convert.ToInt32(option))
                 {
                     case 1:
-                        
+                        UsarVeiculo();
                         break;
 
                     case 2:
+                        UsarPessoa();
                         break;
 
                     default:
@@ -35,6 +38,31 @@ namespace POOExample.ConsoleApp
                 Console.WriteLine(ex);
             }
         }
+
+        #region Pessoa
+        public static void UsarPessoa()
+        {
+            Homem homem = new Homem(457, "Vinicus Bidoia", new DateTime(1998, 04, 24), 183, "Loiro", "Verde");
+            Mulher mulher = new Mulher(111, "Mariana Salvador", new DateTime(1989, 07, 26), 162, "Morena", "Castanho");
+
+            Comer(homem, mulher);
+        }
+
+        static void Comer(params Pessoa[] pessoas)
+        {
+            foreach (var pessoa in pessoas)
+            {
+                pessoa.Andar();
+                pessoa.Falar();
+                pessoa.Sentar();
+
+                Console.WriteLine($"{pessoa.Nome} está comendo!");
+            }
+        }
+
+        #endregion
+
+        #region Veiculo
 
         /// <summary>
         /// Metodo para testar o Veiculo
@@ -65,5 +93,7 @@ namespace POOExample.ConsoleApp
                 Console.WriteLine($"{veiculo.NmModelo} estacionado!");
             }
         }
+
+        #endregion
     }
 }

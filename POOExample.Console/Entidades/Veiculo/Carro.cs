@@ -9,6 +9,7 @@ namespace POOExample.ConsoleApp.Entidades.Veiculo
         //Utilizando Herança 
         public Carro(string nmFabricante, string nmModelo) : base(nmFabricante, nmModelo)
         {
+
         }
     }
 }
